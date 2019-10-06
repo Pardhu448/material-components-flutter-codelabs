@@ -13,8 +13,17 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage1 extends StatefulWidget {
+  const HomePage1({Key key, this.userId}) :
+      super(key: key);
+
+  final String userId;
+  @override
+  _HomeState createState() => _HomeState();
+}
+  class _HomeState extends State<HomePage1> {
   // TODO: Make a collection of cards (102)
   // TODO: Add a variable for Category (104)
   @override
@@ -25,9 +34,10 @@ class HomePage extends StatelessWidget {
       // TODO: Add app bar (102)
       // TODO: Add a grid view (102)
       body: Center(
-        child: Text('You did it!'),
+        child: Text('You are ${widget.userId}'),
       ),
       // TODO: Set resizeToAvoidBottomInset (101)
+
     );
   }
 }

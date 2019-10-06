@@ -13,7 +13,8 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:Spiral/app.dart';
 
-import 'package:Shrine/app.dart';
+import 'auth.dart';
+void main() => runApp(SpiralApp());
 
-void main() => runApp(ShrineApp());

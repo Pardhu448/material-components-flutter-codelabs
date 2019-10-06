@@ -12,41 +12,57 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//import 'package:Spiral/auth.dart';
+import 'package:Spiral/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'home.dart';
-import 'login.dart';
+import 'auth.dart';
+import 'root_page.dart';
 
-// TODO: Convert ShrineApp to stateful widget (104)
-class ShrineApp extends StatelessWidget {
-  
+// TODO: Convert SpiralApp to stateful widget (104)
+class SpiralApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shrine',
+      title: 'SPIRAL',
       // TODO: Change home: to a Backdrop with a HomePage frontLayer (104)
-      home: HomePage(),
+      home: ChangeNotifierProvider<AuthProvider>(
+        builder: (context) => AuthProvider(),
+        child: RootPage(),
+      ),
       // TODO: Make currentCategory field take _currentCategory (104)
       // TODO: Pass _currentCategory for frontLayer (104)
       // TODO: Change backLayer field value to CategoryMenuPage (104)
-      initialRoute: '/login',
-      onGenerateRoute: _getRoute,
+      //initialRoute: '/login',
+      //onGenerateRoute: _getRoute,
       // TODO: Add a theme (103)
-    );
-  }
+      theme: ThemeData(
+        primaryColor: Color(0xFFFFB300),
+        primaryColorLight: Color(0xFFFFE54C),
+        primaryColorDark: Color(0xFFC68400),
+        primaryTextTheme: TextTheme(
+          body1: TextStyle(color: Color(0xFF000000), fontFamily: 'Rubik')
+        ),
+      ),
 
-  Route<dynamic> _getRoute(RouteSettings settings) {
-    if (settings.name != '/login') {
-      return null;
-    }
-
-    return MaterialPageRoute<void>(
-      settings: settings,
-      builder: (BuildContext context) => LoginPage(),
-      fullscreenDialog: true,
     );
   }
 }
+
+//  Route<dynamic> _getRoute(RouteSettings settings) {
+//    if (settings.name != '/login') {
+//      return null;
+//    }
+
+//    return MaterialPageRoute<void>(
+//      settings: settings,
+//      builder: (BuildContext context) => LoginPage(auth: Auth()),
+//      fullscreenDialog: true,
+//    );
+//  }
+//}
 
 // TODO: Build a Shrine Theme (103)
 // TODO: Build a Shrine Text Theme (103)
